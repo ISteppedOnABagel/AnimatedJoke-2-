@@ -67,6 +67,57 @@ button:focus {
   transition: transform 1s, color 1s;
 }
 
+/* Infinite color cycle for the punchline text */
+@keyframes punchlineColor {
+  0% { color: #2e8b57; }
+  20% { color: #ff6b6b; }
+  40% { color: #ffd93d; }
+  60% { color: #6be3ff; }
+  80% { color: #b08cff; }
+ 100% { color: #2e8b57; }
+}
+
+#punchline {
+  animation: punchlineColor 6s linear infinite;
+}
+
+@keyframes pulseScale {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.25);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.pulsing {
+  animation: pulseScale 1.6s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #punchline {
+    animation: none;
+  }
+  .pulsing {
+    animation: none;
+  }
+}
+
+#punchline.pulsing {
+  animation: punchlineColor 6s linear infinite, pulseScale 1.6s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #punchline.pulsing {
+    animation: none;
+  }
+}
+
 p {
   font-family: 'UndertaleSans', Arial, sans-serif;
 }
@@ -90,3 +141,4 @@ h1 {
     transform: translateY(0);
   }
 }
+
