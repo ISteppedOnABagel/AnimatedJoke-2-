@@ -1,3 +1,19 @@
+@font-face {
+  font-family: 'UndertaleSans';
+  src: local('UndertaleSans'), url('UndertaleSans.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'DeterminationMono';
+  src: local('Determination Mono'), url('determinationmonoweb-webfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 body {
   font-family: Arial, sans-serif;
   text-align: center;
@@ -8,6 +24,7 @@ body {
   margin-top: 50px;
 }
 
+
 button {
   margin-top: 20px;
   padding: 10px 20px;
@@ -17,11 +34,27 @@ button {
   border-radius: 5px;
   background-color: #2196f3;
   color: white;
-  transition: background-color 0.3s;
+  transition: background-color 260ms cubic-bezier(.22,.9,.33,1),
+    transform 360ms cubic-bezier(.22,.9,.33,1), box-shadow 360ms
+    cubic-bezier(.22,.9,.33,1), color 260ms ease;
+  will-change: transform, box-shadow;
+  -webkit-tap-highlight-color: transparent;
 }
 
 button:hover {
   background-color: #0b79d0;
+  transform: translate3d(0, -6px, 0);
+  box-shadow: 0 10px 20px rgba(11, 121, 208, 0.18);
+}
+
+button:active {
+  transform: translate3d(0, -2px, 0);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+}
+
+button:focus {
+  outline: 3px solid rgba(33, 150, 243, 0.25);
+  outline-offset: 2px;
 }
 
 .hidden {
@@ -32,4 +65,28 @@ button:hover {
   font-weight: bold;
   color: #2e8b57;
   transition: transform 1s, color 1s;
+}
+
+p {
+  font-family: 'UndertaleSans', Arial, sans-serif;
+}
+
+h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  animation: floatY 3s ease-in-out infinite;
+  will-change: transform;
+  font-family: 'DeterminationMono', monospace;
+}
+
+@keyframes floatY {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
